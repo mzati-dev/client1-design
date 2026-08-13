@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BusinessName — Homepage Layout Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16221E;
+    --paper:#EFEAD9;
+    --paper-2:#E4DEC9;
+    --ochre:#C98A2C;
+    --teal:#1F4B44;
+    --brick:#A63A2A;
+    --sage:#8FA38C;
+    --line: rgba(22,34,30,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mock-label{
+    position:fixed; top:10px; right:10px; z-index:999;
+    background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:11px;
+    padding:6px 10px; border-radius:3px; letter-spacing:.02em;
+    opacity:.85;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+
+  /* Announcement bar */
+  .topbar{
+    background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:12px;
+    letter-spacing:.04em; text-align:center; padding:8px 12px;
+  }
+
+  /* Header */
+  header{
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+    position:sticky; top:0; z-index:100;
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:26px;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--ochre);}
+  nav.primary-nav{
+    display:flex; gap:36px; font-size:14px; font-weight:500;
+  }
+  nav.primary-nav .dropdown{position:relative;}
+  nav.primary-nav .dropdown:hover .dropdown-menu{display:flex;}
+  .dropdown-menu{
+    display:none; flex-direction:column; position:absolute; top:28px; left:0;
+    background:var(--paper); border:1px solid var(--line); min-width:160px;
+    padding:6px 0; box-shadow:0 8px 20px rgba(22,34,30,.08);
+  }
+  .dropdown-menu a{padding:10px 16px; font-size:13px; font-weight:400;}
+  .dropdown-menu a:hover{background:var(--paper-2);}
+  .header-actions{display:flex; align-items:center; gap:22px; font-size:14px; font-weight:500;}
+  .icon-btn{display:flex; align-items:center; gap:6px;}
+  .cart-count{
+    background:var(--brick); color:var(--paper); font-family:'IBM Plex Mono', monospace;
+    font-size:10px; padding:1px 6px; border-radius:20px;
+  }
+  .btn{
+    display:inline-block; padding:11px 22px; font-size:13px; font-weight:600;
+    border-radius:2px; letter-spacing:.02em;
+  }
+  .btn-primary{background:var(--teal); color:var(--paper);}
+  .btn-outline{border:1px solid var(--ink);}
+
+  /* Hero */
+  .hero{
+    display:grid; grid-template-columns:1.1fr .9fr; align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-copy{
+    padding:90px 60px 90px 32px; display:flex; flex-direction:column; justify-content:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--teal);}
+  .hero h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:58px; line-height:1.04;
+    letter-spacing:-0.015em; max-width:560px;
+  }
+  .hero h1 em{font-style:italic; color:var(--ochre); font-weight:500;}
+  .hero p{
+    margin-top:26px; font-size:16px; line-height:1.6; max-width:440px; color:rgba(22,34,30,.75);
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:36px;}
+  .hero-visual{
+    background:var(--teal); position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .price-tag{
+    background:var(--paper); color:var(--ink); width:230px; padding:26px 22px;
+    position:relative; font-family:'IBM Plex Mono', monospace;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 88%);
+  }
+  .price-tag .ptag-title{font-family:'Fraunces', serif; font-size:19px; font-weight:600; margin-bottom:8px;}
+  .price-tag .ptag-price{font-size:22px; color:var(--brick); font-weight:500;}
+  .price-tag .ptag-hole{
+    position:absolute; top:16px; right:16px; width:10px; height:10px;
+    border-radius:50%; border:2px solid var(--ink);
+  }
+
+  /* Section heading pattern */
+  .section{padding:88px 32px;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:44px; border-bottom:1px solid var(--line); padding-bottom:24px;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif; font-weight:600; font-size:34px; letter-spacing:-.01em;
+  }
+  .section-head .see-all{font-size:13px; font-weight:600; border-bottom:1px solid var(--ink); padding-bottom:2px;}
+  .section-eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:10px; display:block;
+  }
+
+  /* Product grid */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .product-card{
+    background:var(--paper); border:1px solid var(--line); position:relative;
+  }
+  .product-img{
+    aspect-ratio:1/1; background:linear-gradient(135deg,var(--sage),var(--paper-2));
+    position:relative;
+  }
+  .stock-flag{
+    position:absolute; top:12px; left:12px; background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.04em;
+    padding:4px 8px; text-transform:uppercase;
+  }
+  .product-info{padding:18px;}
+  .product-info .pname{font-family:'Fraunces', serif; font-weight:600; font-size:17px; margin-bottom:6px;}
+  .product-meta{
+    display:flex; justify-content:space-between; align-items:center; margin-top:14px;
+  }
+  .product-price{font-family:'IBM Plex Mono', monospace; font-size:15px; color:var(--brick); font-weight:500;}
+  .engagement{display:flex; gap:14px; font-size:12px; color:rgba(22,34,30,.6); align-items:center;}
+  .engagement span{display:flex; align-items:center; gap:4px;}
+
+  /* Team strip */
+  .about-split{display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center;}
+  .about-split p{line-height:1.7; color:rgba(22,34,30,.75); font-size:15px; margin-top:16px;}
+  .stat-row{display:flex; gap:40px; margin-top:34px;}
+  .stat-row .stat-num{font-family:'Fraunces', serif; font-size:32px; font-weight:600; color:var(--teal);}
+  .stat-row .stat-label{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.04em; text-transform:uppercase; margin-top:4px;}
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .team-card .timg{aspect-ratio:4/5; background:linear-gradient(160deg,var(--paper-2),var(--sage));}
+  .team-card .tname{font-family:'Fraunces', serif; font-weight:600; margin-top:12px; font-size:16px;}
+  .team-card .trole{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--teal); margin-top:2px;}
+
+  /* Careers band */
+  .careers-band{
+    background:var(--ink); color:var(--paper); padding:80px 32px;
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  }
+  .careers-band h2{font-family:'Fraunces', serif; font-size:32px; font-weight:600;}
+  .careers-band p{margin-top:14px; color:rgba(239,234,217,.7); line-height:1.6; max-width:420px;}
+  .job-list{display:flex; flex-direction:column; border-top:1px solid rgba(239,234,217,.2);}
+  .job-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 0; border-bottom:1px solid rgba(239,234,217,.2);
+  }
+  .job-row .jtitle{font-weight:500; font-size:15px;}
+  .job-row .jmeta{font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(239,234,217,.6); margin-top:4px;}
+  .job-row .apply{font-size:12px; font-weight:600; border:1px solid var(--paper); padding:8px 16px;}
+
+  /* Footer */
+  footer{padding:60px 32px 40px; border-top:1px solid var(--line);}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
+  .footer-grid h4{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:16px; color:var(--teal);}
+  .footer-grid a{display:block; font-size:14px; margin-bottom:10px; color:rgba(22,34,30,.75);}
+  .footer-bottom{
+    margin-top:50px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; font-size:12px; color:rgba(22,34,30,.55);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-visual{min-height:320px;}
+    nav.primary-nav{display:none;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+    .about-split, .careers-band, .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-label">This is a LAYOUT MOCKUP For Godfrey Kalua Business Website</div>
+
+<div class="topbar">SERVING BUSINESSES AND HOUSEHOLDS ACROSS MALAWI SINCE [YEAR]</div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">BUSINESSNAME<span>.</span></div>
+    <nav class="primary-nav">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Store</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="icon-btn" href="#">🔍</a>
+      <a class="icon-btn" href="#">🛒 <span class="cart-count">3</span></a>
+      <a class="btn btn-outline" href="#">Log in</a>
+      <a class="btn btn-primary" href="#">Sign up</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Who we are</span>
+    <h1>A Malawian company <em>built on trust</em>, quality, and service.</h1>
+    <p>Learn about our story and team, see what we do, and browse the products we make available to our customers.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#">About us</a>
+      <a class="btn btn-outline" href="#">View products</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="price-tag">
+      <div class="ptag-hole"></div>
+      <div class="ptag-title">Woven Basket</div>
+      <div class="ptag-price">MK 12,500</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--paper-2);">
+  <div class="about-split">
+    <div>
+      <span class="section-eyebrow">About us</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:34px;">Built by a team that knows the market.</h2>
+      <p>A short paragraph here about the business, its founding story, and what makes it different — supplied by the client.</p>
+      <div class="stat-row">
+        <div><div class="stat-num">500+</div><div class="stat-label">Products listed</div></div>
+        <div><div class="stat-num">12</div><div class="stat-label">Team members</div></div>
+        <div><div class="stat-num">4</div><div class="stat-label">Cities served</div></div>
+      </div>
+    </div>
+    <div>
+      <span class="section-eyebrow" style="color:var(--ochre);">Our Team</span>
+      <h3 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; margin-bottom:24px;">The people behind the company</h3>
+      <div class="team-grid">
+        <div class="team-card"><div class="timg"></div><div class="tname">Name Surname</div><div class="trole">Founder</div></div>
+        <div class="team-card"><div class="timg"></div><div class="tname">Name Surname</div><div class="trole">Operations</div></div>
+        <div class="team-card"><div class="timg"></div><div class="tname">Name Surname</div><div class="trole">Sales Lead</div></div>
+        <div class="team-card"><div class="timg"></div><div class="tname">Name Surname</div><div class="trole">Support</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="section-eyebrow">What we offer</span>
+      <h2>Some of our products</h2>
+    </div>
+    <a class="see-all" href="#">See full catalogue →</a>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-img"><span class="stock-flag">In stock</span></div>
+      <div class="product-info">
+        <div class="pname">Clay Water Jug</div>
+        <div class="product-meta">
+          <span class="product-price">MK 8,000</span>
+          <span class="engagement"><span>♥ 24</span><span>💬 6</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="stock-flag">In stock</span></div>
+      <div class="product-info">
+        <div class="pname">Chitenje Fabric — 6yd</div>
+        <div class="product-meta">
+          <span class="product-price">MK 15,000</span>
+          <span class="engagement"><span>♥ 41</span><span>💬 12</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="stock-flag">In stock</span></div>
+      <div class="product-info">
+        <div class="pname">Roasted Peanut Butter 500g</div>
+        <div class="product-meta">
+          <span class="product-price">MK 3,200</span>
+          <span class="engagement"><span>♥ 19</span><span>💬 4</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="stock-flag">Low stock</span></div>
+      <div class="product-info">
+        <div class="pname">Hand-carved Stool</div>
+        <div class="product-meta">
+          <span class="product-price">MK 22,000</span>
+          <span class="engagement"><span>♥ 33</span><span>💬 9</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="careers-band">
+  <div>
+    <span class="section-eyebrow" style="color:var(--ochre);">Careers</span>
+    <h2>Join the team behind the market.</h2>
+    <p>Open roles across operations, sales, and delivery. Placeholder copy — client to confirm current openings.</p>
+  </div>
+  <div class="job-list">
+    <div class="job-row">
+      <div><div class="jtitle">Delivery Rider</div><div class="jmeta">Blantyre · Full-time</div></div>
+      <a class="apply" href="#">Apply</a>
+    </div>
+    <div class="job-row">
+      <div><div class="jtitle">Customer Support Agent</div><div class="jmeta">Remote · Full-time</div></div>
+      <a class="apply" href="#">Apply</a>
+    </div>
+    <div class="job-row">
+      <div><div class="jtitle">Warehouse Assistant</div><div class="jmeta">Lilongwe · Part-time</div></div>
+      <a class="apply" href="#">Apply</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <span class="section-eyebrow">Get in touch</span>
+      <h2>Contact us</h2>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px;">
+    <div>
+      <p style="line-height:1.8; color:rgba(22,34,30,.75); font-size:15px;">
+        Phone: [Phone number]<br>
+        Email: [Email address]<br>
+        Address: [Physical address, city]<br>
+        Hours: [e.g. Mon–Fri, 8am–5pm]
+      </p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <input type="text" placeholder="Your name" style="padding:12px 14px; border:1px solid var(--line); background:var(--paper); font-family:'Inter',sans-serif; font-size:14px;">
+      <input type="email" placeholder="Your email" style="padding:12px 14px; border:1px solid var(--line); background:var(--paper); font-family:'Inter',sans-serif; font-size:14px;">
+      <textarea placeholder="Message" rows="4" style="padding:12px 14px; border:1px solid var(--line); background:var(--paper); font-family:'Inter',sans-serif; font-size:14px; resize:vertical;"></textarea>
+      <a class="btn btn-primary" href="#" style="text-align:center;">Send message</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo" style="margin-bottom:14px;">BUSINESSNAME<span>.</span></div>
+      <p style="font-size:13px; color:rgba(22,34,30,.6); max-width:260px; line-height:1.6;">Short company description — supplied by the client.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <a href="#">Store</a>
+      <a href="#">Cart</a>
+      <a href="#">Track Order</a>
+    </div>
+    <div>
+      <h4>Account</h4>
+      <a href="#">Log in</a>
+      <a href="#">Register</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 BusinessName — placeholder</span>
+    <span>Payments via PayChangu · MWK</span>
+  </div>
+</footer>
+
+</body>
+</html>
