@@ -205,6 +205,22 @@
     .team-grid{grid-template-columns:repeat(2,1fr);}
     .about-split, .careers-band, .footer-grid{grid-template-columns:1fr;}
   }
+  @media (max-width:768px){
+  nav.primary-nav{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero h1{font-size:32px;}
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .about-split{grid-template-columns:1fr; gap:36px;}
+  .careers-band{grid-template-columns:1fr; padding:52px 20px;}
+  .job-row{flex-direction:column; align-items:flex-start; gap:8px;}
+  .footer-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:420px){
+  .product-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+ @media (min-width:769px){ .contact-mobile-stack{grid-template-columns:1fr 1fr !important;} }
 </style>
 </head>
 <body>
@@ -357,7 +373,7 @@
       <h2>Contact us</h2>
     </div>
   </div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px;">
+ <div style="display:grid; grid-template-columns:1fr; gap:32px;" class="contact-mobile-stack">
     <div>
       <p style="line-height:1.8; color:rgba(22,34,30,.75); font-size:15px;">
         Phone: [Phone number]<br>
