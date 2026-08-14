@@ -221,6 +221,7 @@
   .footer-grid{grid-template-columns:1fr;}
 }
  @media (min-width:769px){ .contact-mobile-stack{grid-template-columns:1fr 1fr !important;} }
+ #menuBtn{display:block !important;}
 </style>
 </head>
 <body>
@@ -244,9 +245,28 @@
       <a class="icon-btn" href="#">🛒 <span class="cart-count">3</span></a>
       <a class="btn btn-outline" href="#">Log in</a>
       <a class="btn btn-primary" href="#">Sign up</a>
+      <button id="menuBtn" style="display:none; background:none; border:none; cursor:pointer; padding:6px;">
+  <div style="width:22px; height:2px; background:var(--ink); margin:5px 0;"></div>
+  <div style="width:22px; height:2px; background:var(--ink); margin:5px 0;"></div>
+  <div style="width:22px; height:2px; background:var(--ink); margin:5px 0;"></div>
+</button>
     </div>
   </div>
 </header>
+
+<div id="mobileMenu" style="display:none; flex-direction:column; padding:16px 32px; background:var(--paper); border-bottom:1px solid var(--line);">
+  <a href="#" style="padding:10px 0;">Home</a>
+  <a href="#" style="padding:10px 0;">About Us</a>
+  <a href="#" style="padding:10px 0;">Store</a>
+  <a href="#" style="padding:10px 0;">Careers</a>
+  <a href="#" style="padding:10px 0;">Contact</a>
+</div>
+<script>
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    var m = document.getElementById('mobileMenu');
+    m.style.display = (m.style.display === 'none') ? 'flex' : 'none';
+  });
+</script>
 
 <section class="hero">
   <div class="hero-copy">
